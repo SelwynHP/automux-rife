@@ -2,12 +2,12 @@
 $vList = (Get-ChildItem *.avi, *.divx, *.dvx, *.f4p, *.f4v, *.fli, *.flv,
  *.mp4, *.mov, *.m4v, *.mpg, *.mpeg, *.wmv, *.mkv, *.xvid -File)
  $patternEx = '^((?!RIFE).)*$'
- $patternIn = '-\dx-RIFE-RIFE\d\.\d-\d*fps$'
+ $patternIn = '-\dx-RIFE-RIFE\d\.\d-\d*(?:.\d*)?fps$'
  $outputDir = 'E:/'
  #Parses each video file
  foreach($video in $vList)
  {
-    $vPattern = $video.BaseName + $patternIn
+    $vPattern = $video.BaseName.Replace("(", "\(").replace(")", "\)") + $patternIn
     #Searches for matching RIFE video file
     foreach($rife in $vList)
     {
