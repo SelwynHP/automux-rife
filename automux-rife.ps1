@@ -7,7 +7,7 @@ $vList = (Get-ChildItem *.avi, *.divx, *.dvx, *.f4p, *.f4v, *.fli, *.flv,
  #Parses each video file
  foreach($video in $vList)
  {
-    $vPattern = $video.BaseName.Replace("(", "\(").replace(")", "\)") + $patternIn
+    $vPattern = $video.BaseName.Replace("(", "\(").replace(")", "\)").replace("[", "\[").replace("]", "\]") + $patternIn
     #Searches for matching RIFE video file
     foreach($rife in $vList)
     {
